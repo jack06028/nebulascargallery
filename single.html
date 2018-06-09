@@ -248,11 +248,11 @@
     var address = getQueryString('address');
     if (id && address) {
         "use strict";
-        var dappContactAddress = "n1vV2mE1qP3yxsYHG39A665yq9EgbNDNYyX";
+        var dappContactAddress = "n1gB2YravEUrUPrR3QiuHuM26pbqfwh4qVe";
         var nebulas = require("nebulas"),
             Account = Account,
             neb = new nebulas.Neb();
-        neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+        neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
 
         var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
         var nebPay = new NebPay();

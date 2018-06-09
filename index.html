@@ -216,10 +216,10 @@
 		<div class="product-area pb-70">
 			<div class="container">
 				<div class="product-tab-list text-center mb-80 nav product-menu-mrg" role="tablist">
-					<a class="active" href="add.html" data-toggle="tab">
+					<a class="active" href="add.html" target="_blank" >
 						<h4>EDIT MY CAR </h4>
 					</a>
-					<a href="all.html" data-toggle="tab">
+					<a href="all.html" target="_blank" >
 						<h4> ALL THE SPORTS CARS </h4>
 					</a>
 				</div>
@@ -407,11 +407,11 @@
 </script>
 <script>
 	"use strict";
-	var dappContactAddress = "n1vV2mE1qP3yxsYHG39A665yq9EgbNDNYyX";
+	var dappContactAddress = "n1gB2YravEUrUPrR3QiuHuM26pbqfwh4qVe";
 	var nebulas = require("nebulas"),
 		Account = Account,
 		neb = new nebulas.Neb();
-	neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+	neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
 
 	var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
 	var nebPay = new NebPay();
