@@ -427,7 +427,8 @@
 				$('#tuijian').append("暂时没有头脑风暴，你可以去<a href='index.html#next-section'>添加</a>一个！");
 				return;
 			}
-			result = JSON.parse(result);
+			var url = 'http://' + document.domain + '/nebulascargallery/all.html?info=' + encodeURI(encodeURI(result));
+			openwin(url);
 		}).catch(function (err) {
 			console.log("error :" + err.message);
 		})
@@ -435,6 +436,8 @@
 </script>
 
 <script>
+	
+
 	Date.prototype.pattern = function (fmt) {
 		var o = {
 			"M+": this.getMonth() + 1, //月份
