@@ -343,7 +343,7 @@
 		var to = dappContactAddress;
 		var value = "0";
 		var callFunction = "set";
-		var callArgs = "[\"" + $("#carname").val() + "\",\"" + $("#carthumb").val() + "\",\"" + $("#carpicture").val() + "\",,\"" + $("#carcontent").val() + "\"\"" +nowtime + "\"]";
+		var callArgs = "[\"" + $("#carname").val() + "\",\"" + $("#carthumb").val() + "\",\"" + $("#carpicture").val() + "\",\"" + $("#carcontent").val() + "\"\"" +nowtime + "\"]";
 		console.log(callArgs);
 		serialNumber = nebPay.call(to, value, callFunction, callArgs, { //use nebpay's call api to use mycontrat
 			listener: function (resp) {
