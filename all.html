@@ -273,8 +273,36 @@
 		}
 	}
 	var info = JSON.parse(decodeURI(decodeURI(getQueryString('info'))));
-	if(info){
-		console.log(info);
+	if (info) {
+		"use strict";
+		var dappContactAddress = "n1mHXB3hmz3Aq3twysU8Cyauq7TMFTRaVMw";
+		var nebulas = require("nebulas"),
+			Account = Account,
+			neb = new nebulas.Neb();
+		neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+
+		var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
+		var nebPay = new NebPay();
+		var serialNumber;
+		var to = dappContactAddress;
+		var value = "0";
+		var nonce = "0"
+		var gas_price = "1000000"
+		var gas_limit = "2000000"
+		var callFunction = "getinfoByauthor";
+		var callArgs = "[\"" + info + "\"]";
+		var contract = {
+			"function": callFunction,
+			"args": callArgs
+		}
+		neb.api.call(dappContactAddress, dappContactAddress, value, nonce, gas_price, gas_limit, contract).then(function (
+			resp) {
+			var result = resp.result;
+			result = JSON.parse(result);
+			console.log(result);
+		}).catch(function (err) {
+			console.log("error :" + err.message);
+		})
 	}
 </script>
 
