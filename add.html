@@ -291,7 +291,15 @@
 	}
 	$('#submit').click(function () {
 		if (!$("#carname").val()) {
-			alert("sports car's name is valid");
+			layer.open({
+				type: 1,
+				title: 'info',
+				shadeClose: true,
+				shade: false,
+				maxmin: true, //开启最大化最小化按钮
+				area: ['300px', '600px'],
+				content: "sports car's thumb is valid"
+			});
 			return;
 		}
 		if (!$("#carthumb").val()) {
