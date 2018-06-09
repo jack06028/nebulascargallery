@@ -208,37 +208,7 @@
 		</div>
 		<div class="banner-area pt-100 pb-90">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-lg-4">
-						<div class="banner-wrapper mb-30">
-							<a href="#">
-								<img src="assets/img/banner/banner-1.jpg" alt="image">
-							</a>
-							<div class="banner-content">
-								<h2>William's BMW 2</h2>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-lg-4">
-						<div class="banner-wrapper mb-30">
-							<a href="#">
-								<img src="assets/img/banner/banner-2.jpg" alt="image">
-							</a>
-							<div class="banner-content">
-								<h2>The best sports car</h2>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-lg-4">
-						<div class="banner-wrapper mb-30">
-							<a href="#">
-								<img src="assets/img/banner/banner-3.jpg" alt="image">
-							</a>
-							<div class="banner-content">
-								<h2>MY DREAM</h2>
-							</div>
-						</div>
-					</div>
+				<div class="row" id="best">
 				</div>
 			</div>
 		</div>
@@ -384,17 +354,6 @@
 
 
 <script>
-	"use strict";
-	var dappContactAddress = "n1vV2mE1qP3yxsYHG39A665yq9EgbNDNYyX";
-	var nebulas = require("nebulas"),
-		Account = Account,
-		neb = new nebulas.Neb();
-	neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
-
-	var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
-	var nebPay = new NebPay();
-	var serialNumber;
-
 	function openwin(url) {
 		var a = document.createElement("a"); //创建a对象
 		a.setAttribute("href", url);
@@ -411,8 +370,6 @@
 </script>
 
 <script>
-	
-
 	Date.prototype.pattern = function (fmt) {
 		var o = {
 			"M+": this.getMonth() + 1, //月份
@@ -447,6 +404,46 @@
 		}
 		return fmt;
 	}
+</script>
+<script>
+	"use strict";
+	var dappContactAddress = "n1vV2mE1qP3yxsYHG39A665yq9EgbNDNYyX";
+	var nebulas = require("nebulas"),
+		Account = Account,
+		neb = new nebulas.Neb();
+	neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+
+	var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
+	var nebPay = new NebPay();
+	var serialNumber;
+	var to = dappContactAddress;
+	var value = "0";
+	var nonce = "0"
+	var gas_price = "1000000"
+	var gas_limit = "2000000"
+	var info = "n1JBdoSeXNNMroz8wKKEFafJrdAJxjXDu2d";
+	var callFunction = "getinfoByauthor";
+	var callArgs = "[\"" + info + "\"]";
+	var contract = {
+		"function": callFunction,
+		"args": callArgs
+	}
+	neb.api.call(dappContactAddress, dappContactAddress, value, nonce, gas_price, gas_limit, contract).then(function (
+		resp) {
+		var result = resp.result;
+		result = JSON.parse(result);
+		console.log(result);
+		var html = '';
+		for (var i = 0; i < result.length; i++) {
+			html += '<div class="col-md-4 col-lg-4"><div class="banner-wrapper mb-30"><a href="single.html?id=' + result[i]._id +
+				'&address=' + result[i].author + '">';
+			html += '<img src="' + result[i].carthumb + '" alt="image"></a><div class="banner-content"><h2>' + result[i].carname +
+				'</h2></div></div></div>'
+		}
+		$("#best").append(html);
+	}).catch(function (err) {
+		console.log("error :" + err.message);
+	})
 </script>
 
 </html>
