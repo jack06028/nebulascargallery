@@ -271,11 +271,11 @@
 </body>
 <script>
 	"use strict";
-	var dappContactAddress = "n1pjyRkNFRG8PMVxMXGDLNzaEwGdgv4ZaLy";
+	var dappContactAddress = "n1mHXB3hmz3Aq3twysU8Cyauq7TMFTRaVMw";
 	var nebulas = require("nebulas"),
 		Account = Account,
 		neb = new nebulas.Neb();
-	neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+	neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
 
 	var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
 	var nebPay = new NebPay();
@@ -322,7 +322,7 @@
 				shade: false,
 				maxmin: true, //开启最大化最小化按钮
 				area: ['300px', '100px'],
-				content: "sports car's thumb is valid"
+				content: "sports car's picture is valid"
 			});
 			return;
 		}
@@ -339,13 +339,12 @@
 			return;
 		}
 		var date = new Date();
-		var nowtime = date.pattern("yyyy年MM月dd日hh时mm分ss秒");
-
+		var nowtime = date.pattern("dd\MM\yyyy");
+		console.log(nowtime);
 		var to = dappContactAddress;
 		var value = "0";
 		var callFunction = "set";
-		var callArgs = "[\"" + $("#name").val() + "\",\"" + $("#email").val() + "\",\"" + $("#message").val() + "\",\"" +
-			nowtime + "\"]";
+		var callArgs = "[\"" + $("#carname").val() + "\",\"" + $("#carthumb").val() + "\",\"" + $("#carpicture").val() + "\",,\"" + $("#carcontent").val() + "\"\"" +nowtime + "\"]";
 		console.log(callArgs);
 		serialNumber = nebPay.call(to, value, callFunction, callArgs, { //use nebpay's call api to use mycontrat
 			listener: function (resp) {
