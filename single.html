@@ -211,4 +211,53 @@
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
+<script>
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            var q = window.location.pathname.substr(1).match(reg_rewrite);
+            if (r != null) {
+                return unescape(r[2]);
+            } else if (q != null) {
+                return unescape(q[2]);
+            } else {
+                return null;
+            }
+        }
+        var id = getQueryString('id');
+        var address = getQueryString('address');        
+        if (id && address) {
+            "use strict";
+            var dappContactAddress = "n1vV2mE1qP3yxsYHG39A665yq9EgbNDNYyX";
+            var nebulas = require("nebulas"),
+                Account = Account,
+                neb = new nebulas.Neb();
+            neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+    
+            var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
+            var nebPay = new NebPay();
+            var serialNumber;
+            var to = dappContactAddress;
+            var value = "0";
+            var nonce = "0"
+            var gas_price = "1000000"
+            var gas_limit = "2000000"
+            var callFunction = "getdataByautohorandId";
+            var callArgs = "[\"" + address+id + "\"]";
+            var contract = {
+                "function": callFunction,
+                "args": callArgs
+            }
+            neb.api.call(dappContactAddress, dappContactAddress, value, nonce, gas_price, gas_limit, contract).then(function (
+                resp) {
+                var result = resp.result;
+                result = JSON.parse(result);
+                console.log(result);
+                
+            }).catch(function (err) {
+                console.log("error :" + err.message);
+            })
+        }
+    </script>
 </html>
