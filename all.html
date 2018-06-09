@@ -284,7 +284,7 @@
 			for (var i = 0; i < result.length; i++) {
 				html += '<div class="col-md-4 col-lg-4"><div class="banner-wrapper mb-30"><a href="single.html?id=' + result[i]._id +
 					'&address=' + result[i].author + '">';
-				html += '<img src="' + result[i].carthumb + '" alt="image"></a><div class="banner-content"><h2>' + result[i].carname +
+				html += '<img src="' + result[i].carthumb + '" alt="image" style="max-height: 295px"></a><div class="banner-content"><h2>' + result[i].carname +
 					'</h2></div></div></div>'
 			}
 			$("#carlist").append(html);
@@ -322,7 +322,7 @@
 			for (var i = 0; i < result.length; i++) {
 				html += '<div class="col-md-4 col-lg-4"><div class="banner-wrapper mb-30"><a href="single.html?id=' + result[i]._id +
 					'&address=' + result[i].author + '">';
-				html += '<img src="' + result[i].carthumb + '" alt="image"></a><div class="banner-content"><h2>' + result[i].carname +
+				html += '<img src="' + result[i].carthumb + '" alt="image" style="max-height: 295px"></a><div class="banner-content"><h2>' + result[i].carname +
 					'</h2></div></div></div>'
 			}
 			$("#carlist").append(html);
