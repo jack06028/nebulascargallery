@@ -326,6 +326,15 @@
 
 	
 	$('#serarch').click(function () {
+		$('#serarch').click(function () {
+		if($("#address").val().length != 35){
+			alert("your wallet address is valid");
+			return;
+		}
+		var url = 'http://' + document.domain + '/nebulascargallery/all.html?info=' + $("#address").val();
+		openwin(url);
+		return;
+	})
 		var url = 'http://' + document.domain + '/nebulascargallery/all.html?info=' + $("#address").val();
 		openwin(url);
 		return;
