@@ -272,7 +272,7 @@
 			return null;
 		}
 	}
-	var info = decodeURI(decodeURI(getQueryString('info')));
+	var info = JSON.parse(decodeURI(decodeURI(getQueryString('info'))));
 	if(info){
 		console.log(info);
 	}
