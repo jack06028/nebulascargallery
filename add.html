@@ -155,13 +155,13 @@
 									<form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
 									    novalidate>
 										<div id="mc_embed_signup_scroll" class="mc-form">
-											<input type="email" value="" name="EMAIL" id="" class="email" placeholder="Enter your wallet address here..." required>
+											<input type="text" value="" id="address" placeholder="Enter your wallet address here..." required>
 											<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 											<div class="mc-news" aria-hidden="true">
 												<input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value="">
 											</div>
 											<div class="clear">
-												<input type="button" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+												<input type="button" id="serarch" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
 											</div>
 										</div>
 									</form>
@@ -343,7 +343,8 @@
 		var to = dappContactAddress;
 		var value = "0";
 		var callFunction = "set";
-		var callArgs = "[\"" + $("#carname").val() + "\",\"" + $("#carthumb").val() + "\",\"" + $("#carpicture").val() + "\",\"" + $("#carcontent").val() + "\",\"" +nowtime + "\"]";
+		var callArgs = "[\"" + $("#carname").val() + "\",\"" + $("#carthumb").val() + "\",\"" + $("#carpicture").val() +
+			"\",\"" + $("#carcontent").val() + "\",\"" + nowtime + "\"]";
 		console.log(callArgs);
 		serialNumber = nebPay.call(to, value, callFunction, callArgs, { //use nebpay's call api to use mycontrat
 			listener: function (resp) {
@@ -354,40 +355,46 @@
 </script>
 
 <script>
+	$('#serarch').click(function () {
+		var url = 'http://' + document.domain + '/nebulascargallery/all.html?info=' + $("#address").val();
+		openwin(url);
+		return;
+	})
+
 	Date.prototype.pattern = function (fmt) {
-    var o = {
-      "M+": this.getMonth() + 1, //月份
-      "d+": this.getDate(), //日
-      "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
-      "H+": this.getHours(), //小时
-      "m+": this.getMinutes(), //分
-      "s+": this.getSeconds(), //秒
-      "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-      "S": this.getMilliseconds() //毫秒
-    };
-    var week = {
-      "0": "/u65e5",
-      "1": "/u4e00",
-      "2": "/u4e8c",
-      "3": "/u4e09",
-      "4": "/u56db",
-      "5": "/u4e94",
-      "6": "/u516d"
-    };
-    if (/(y+)/.test(fmt)) {
-      fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    }
-    if (/(E+)/.test(fmt)) {
-      fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f" : "/u5468") : "") +
-        week[this.getDay() + ""]);
-    }
-    for (var k in o) {
-      if (new RegExp("(" + k + ")").test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-      }
-    }
-    return fmt;
-  }
+		var o = {
+			"M+": this.getMonth() + 1, //月份
+			"d+": this.getDate(), //日
+			"h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
+			"H+": this.getHours(), //小时
+			"m+": this.getMinutes(), //分
+			"s+": this.getSeconds(), //秒
+			"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+			"S": this.getMilliseconds() //毫秒
+		};
+		var week = {
+			"0": "/u65e5",
+			"1": "/u4e00",
+			"2": "/u4e8c",
+			"3": "/u4e09",
+			"4": "/u56db",
+			"5": "/u4e94",
+			"6": "/u516d"
+		};
+		if (/(y+)/.test(fmt)) {
+			fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+		}
+		if (/(E+)/.test(fmt)) {
+			fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f" : "/u5468") : "") +
+				week[this.getDay() + ""]);
+		}
+		for (var k in o) {
+			if (new RegExp("(" + k + ")").test(fmt)) {
+				fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+			}
+		}
+		return fmt;
+	}
 </script>
 
 </html>
