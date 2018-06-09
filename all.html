@@ -279,6 +279,7 @@
 			resp) {
 			var result = resp.result;
 			result = JSON.parse(result);
+			console.log(result);
 			var html = '';
 			for(var i = 0;i<result.length;i++){
 				html += '<div class="col-md-4 col-lg-4"><div class="banner-wrapper mb-30"><a href="single.html?id='+result[i]._id+'&address='+info+'>';
