@@ -291,51 +291,19 @@
 	}
 	$('#submit').click(function () {
 		if (!$("#carname").val()) {
-			layer.open({
-				type: 1,
-				title: 'info',
-				shadeClose: true,
-				shade: false,
-				maxmin: true, //开启最大化最小化按钮
-				area: ['300px', '100px'],
-				content: "sports car's thumb is valid"
-			});
+			alert("sports car's thumb is valid");
 			return;
 		}
 		if (!$("#carthumb").val()) {
-			layer.open({
-				type: 1,
-				title: 'info',
-				shadeClose: true,
-				shade: false,
-				maxmin: true, //开启最大化最小化按钮
-				area: ['300px', '100px'],
-				content: "sports car's thumb is valid"
-			});
+			alert("sports car's thumb is valid");
 			return;
 		}
 		if (!$("#carpicture").val()) {
-			layer.open({
-				type: 1,
-				title: 'info',
-				shadeClose: true,
-				shade: false,
-				maxmin: true, //开启最大化最小化按钮
-				area: ['300px', '100px'],
-				content: "sports car's picture is valid"
-			});
+			alert("sports car's picture is valid");
 			return;
 		}
 		if (!$("#carcontent").val()) {
-			layer.open({
-				type: 1,
-				title: 'info',
-				shadeClose: true,
-				shade: false,
-				maxmin: true, //开启最大化最小化按钮
-				area: ['300px', '100px'],
-				content: "sports car's content is valid"
-			});
+			alert("sports car's content is valid");
 			return;
 		}
 		var date = new Date();
