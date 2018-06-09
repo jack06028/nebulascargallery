@@ -296,6 +296,15 @@
 		openwin(url);
 		return;
 	})
+
+	function openwin(url) {
+		var a = document.createElement("a"); //创建a对象
+		a.setAttribute("href", url);
+		a.setAttribute("target", "_blank");
+		a.setAttribute("id", "camnpr");
+		document.body.appendChild(a);
+		a.click(); //执行当前对象
+	}
 </script>
 
 </html>
