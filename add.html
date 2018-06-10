@@ -317,6 +317,8 @@
 		serialNumber = nebPay.call(to, value, callFunction, callArgs, { //use nebpay's call api to use mycontrat
 			listener: function (resp) {
 				console.log("thecallback is " + resp)
+				var respString = JSON.stringify(resp);
+				alert(respString)
 			}
 		});
 	})
