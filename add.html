@@ -318,15 +318,18 @@
 			listener: function (resp) {
 				console.log("thecallback is " + resp)
 				var respString = JSON.stringify(resp);
-				alert(respString)
+				if (respString.search("rejected by user") !== -1) {
+					clearInterval(intervalQuery)
+					alert(respString)
+				} else if (respString.search("txhash") !== -1) {
+					alert("wait for tx result: " + resp.txhash)
+				}
 			}
 		});
 	})
 </script>
 
 <script>
-
-	
 	$('#serarch').click(function () {
 		if ($("#address").val().length != 35) {
 			alert("your wallet address is valid");
